@@ -52,3 +52,9 @@ The site will be available at `https://YOUR-USER.github.io/YOUR-REPOSITORY/`.
 ## Accessibility
 
 The game uses semantic buttons, visible focus states, an ARIA live region for feedback, large tap targets, keyboard shortcuts, system dark mode, and reduced-motion support.
+
+
+## Links
+
+- Live game: https://jens246.github.io/who-made-the-rule/
+- Source repository: https://github.com/JenS246/who-made-the-rule
