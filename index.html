@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#17181d" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#b8d8ee" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#10263b" media="(prefers-color-scheme: dark)" />
     <meta
       name="description"
       content="A fast trivia game about the institutions that create legal rules."
@@ -14,6 +14,11 @@
     <script src="app.js" defer></script>
   </head>
   <body>
+    <div class="background-shapes" aria-hidden="true">
+      <span class="shape shape-diamond"></span>
+      <span class="shape shape-ring"></span>
+      <span class="shape shape-bar"></span>
+    </div>
     <main class="game-shell" aria-labelledby="game-title">
       <header class="game-header">
         <div class="title-lockup">
@@ -71,10 +76,6 @@
         <button id="play-again-button" class="play-again-button" type="button">PLAY AGAIN</button>
       </section>
 
-      <footer>
-        <span>LAW / NOT LAW</span>
-        <span>COMPANION GAME</span>
-      </footer>
     </main>
   </body>
 </html>

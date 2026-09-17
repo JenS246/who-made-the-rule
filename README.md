@@ -1,8 +1,11 @@
 # WHO MADE THE RULE?
 
-A small, fast trivia game about where legal rules come from. Players read one plain-English scenario, choose **Legislature**, **Court**, or **Agency**, and get immediate feedback.
+A small, fast trivia game about where legal rules come from. Players read one plain-English scenario, choose **Legislature**, **Court**, or **Agency**, and get immediate feedback from a 36-card question bank.
 
 The game is designed as a companion to **LAW / NOT LAW**. It uses a single-card flow, bold typography, compact progress, tactile buttons, and a short end screen.
+
+- Live game: https://jens246.github.io/who-made-the-rule/
+- Source repository: https://github.com/JenS246/who-made-the-rule
 
 ## How it works
 
@@ -52,9 +55,3 @@ The site will be available at `https://YOUR-USER.github.io/YOUR-REPOSITORY/`.
 ## Accessibility
 
 The game uses semantic buttons, visible focus states, an ARIA live region for feedback, large tap targets, keyboard shortcuts, system dark mode, and reduced-motion support.
-
-
-## Links
-
-- Live game: https://jens246.github.io/who-made-the-rule/
-- Source repository: https://github.com/JenS246/who-made-the-rule

@@ -34,6 +34,36 @@ const questionBank = [
     explanation: "Local legislative bodies enact ordinances within their authority.",
   },
   {
+    prompt: "A state legislature amends a statute governing security deposits.",
+    answer: "Legislature",
+    explanation: "State legislatures create and amend state statutes.",
+  },
+  {
+    prompt: "Congress enacts a new tax deduction in the federal tax code.",
+    answer: "Legislature",
+    explanation: "Congress enacts federal statutes, including changes to the tax code.",
+  },
+  {
+    prompt: "A state house and senate repeal an outdated criminal statute.",
+    answer: "Legislature",
+    explanation: "A legislature can enact, amend, or repeal statutes.",
+  },
+  {
+    prompt: "A town council passes an ordinance setting local noise limits.",
+    answer: "Legislature",
+    explanation: "A town council acts as a local legislature when it enacts ordinances.",
+  },
+  {
+    prompt: "Congress passes a statute creating a new federal benefit program.",
+    answer: "Legislature",
+    explanation: "Congress creates federal programs by enacting legislation.",
+  },
+  {
+    prompt: "A state general assembly adds a remedy to a consumer protection statute.",
+    answer: "Legislature",
+    explanation: "The state legislature determines the remedies available under its statutes.",
+  },
+  {
     prompt: "An appellate court explains how a statute applies to a contract dispute.",
     answer: "Court",
     explanation: "Courts interpret and apply statutes in judicial decisions.",
@@ -62,6 +92,36 @@ const questionBank = [
     prompt: "An appeals court clarifies when a legal test is satisfied.",
     answer: "Court",
     explanation: "Appellate courts explain and apply legal standards in their opinions.",
+  },
+  {
+    prompt: "A state high court interprets a phrase in the state constitution.",
+    answer: "Court",
+    explanation: "Courts interpret constitutional language when deciding cases.",
+  },
+  {
+    prompt: "A federal appeals court explains how an earlier precedent controls a new case.",
+    answer: "Court",
+    explanation: "Courts interpret and apply precedent through judicial decisions.",
+  },
+  {
+    prompt: "A supreme court overrules one of its earlier judicial decisions.",
+    answer: "Court",
+    explanation: "Higher courts can reconsider and overrule their own precedents.",
+  },
+  {
+    prompt: "A judge interprets a statute before deciding whether a lawsuit was filed on time.",
+    answer: "Court",
+    explanation: "Courts interpret statutes and apply them to disputes.",
+  },
+  {
+    prompt: "An appellate court defines the common-law duty owed in a negligence case.",
+    answer: "Court",
+    explanation: "Courts develop common-law rules through their decisions.",
+  },
+  {
+    prompt: "A federal court explains what a regulation means in a dispute before it.",
+    answer: "Court",
+    explanation: "Courts interpret regulations when resolving cases.",
   },
   {
     prompt: "The EPA issues detailed pollution regulations under authority from Congress.",
@@ -93,6 +153,36 @@ const questionBank = [
     answer: "Agency",
     explanation: "The FCC is an agency exercising authority delegated by Congress.",
   },
+  {
+    prompt: "The FDA adopts food-labeling regulations under authority granted by federal law.",
+    answer: "Agency",
+    explanation: "The FDA is an agency that issues regulations under statutory authority.",
+  },
+  {
+    prompt: "A state insurance department issues regulations authorized by the state legislature.",
+    answer: "Agency",
+    explanation: "State agencies issue regulations within authority granted by state law.",
+  },
+  {
+    prompt: "A securities agency adopts detailed disclosure rules under a federal statute.",
+    answer: "Agency",
+    explanation: "Agencies create detailed regulations when legislation authorizes them to do so.",
+  },
+  {
+    prompt: "A public utility commission issues a rate-setting rule authorized by state law.",
+    answer: "Agency",
+    explanation: "A utility commission is an agency exercising authority granted by law.",
+  },
+  {
+    prompt: "The IRS issues a tax regulation under authority provided by Congress.",
+    answer: "Agency",
+    explanation: "The IRS is an agency that issues regulations under federal statutory authority.",
+  },
+  {
+    prompt: "A state health department adopts restaurant sanitation regulations authorized by statute.",
+    answer: "Agency",
+    explanation: "Health departments are agencies that regulate under authority granted by law.",
+  },
 ];
 
 const ui = {
@@ -115,6 +205,7 @@ let cards = [];
 let cardIndex = 0;
 let score = 0;
 let answered = false;
+let previousRoundSignature = "";
 
 function shuffled(items) {
   const copy = [...items];
@@ -125,13 +216,26 @@ function shuffled(items) {
   return copy;
 }
 
-function selectCards() {
+function buildRound() {
   const answers = ["Legislature", "Court", "Agency"];
   const balancedCards = answers.flatMap((answer) =>
     shuffled(questionBank.filter((card) => card.answer === answer)).slice(0, 3),
   );
   const remainingCards = questionBank.filter((card) => !balancedCards.includes(card));
   return shuffled([...balancedCards, ...shuffled(remainingCards).slice(0, CARD_COUNT - balancedCards.length)]);
+}
+
+function selectCards() {
+  let selectedCards = buildRound();
+  let signature = selectedCards.map((card) => card.prompt).join("|");
+
+  if (signature === previousRoundSignature) {
+    selectedCards = [...selectedCards.slice(1), selectedCards[0]];
+    signature = selectedCards.map((card) => card.prompt).join("|");
+  }
+
+  previousRoundSignature = signature;
+  return selectedCards;
 }
 
 function startGame() {
