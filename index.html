@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f4f1ea" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#17181d" media="(prefers-color-scheme: dark)" />
+    <meta
+      name="description"
+      content="A fast trivia game about the institutions that create legal rules."
+    />
+    <title>Who Made the Rule?</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <main class="game-shell" aria-labelledby="game-title">
+      <header class="game-header">
+        <div class="title-lockup">
+          <span class="family-mark" aria-hidden="true">WHO?</span>
+          <h1 id="game-title">WHO MADE<br />THE RULE?</h1>
+        </div>
+
+        <div class="game-stats" aria-label="Game progress">
+          <span id="progress">1 / 10</span>
+          <span id="score">0 correct</span>
+        </div>
+      </header>
+
+      <section id="play-screen" class="play-screen" aria-label="Question">
+        <article id="question-card" class="question-card">
+          <span class="card-label">WHO MADE THIS RULE?</span>
+          <p id="question-text" class="question-text"></p>
+          <span class="corner-mark" aria-hidden="true">?</span>
+        </article>
+
+        <div id="answers" class="answers" aria-label="Choose the institution">
+          <button class="answer-button" data-answer="Legislature" type="button">
+            <span class="key-hint" aria-hidden="true">1</span>
+            <span>LEGISLATURE</span>
+          </button>
+          <button class="answer-button" data-answer="Court" type="button">
+            <span class="key-hint" aria-hidden="true">2</span>
+            <span>COURT</span>
+          </button>
+          <button class="answer-button" data-answer="Agency" type="button">
+            <span class="key-hint" aria-hidden="true">3</span>
+            <span>AGENCY</span>
+          </button>
+        </div>
+
+        <div id="feedback" class="feedback" aria-live="polite" aria-atomic="true" hidden>
+          <div>
+            <strong id="feedback-title"></strong>
+            <p id="feedback-text"></p>
+          </div>
+          <button id="next-button" class="next-button" type="button">NEXT CARD</button>
+        </div>
+      </section>
+
+      <section id="end-screen" class="end-screen" aria-labelledby="end-title" hidden>
+        <div class="result-burst" aria-hidden="true">
+          <span></span><span></span><span></span><span></span><span></span>
+        </div>
+        <p class="card-label">CASE CLOSED</p>
+        <h2 id="end-title">YOU GOT <span id="final-score">0 / 10</span></h2>
+        <p class="takeaway">
+          Different sources of law come from different institutions. Legislatures enact statutes,
+          courts interpret and apply law, and agencies issue regulations under legal authority.
+        </p>
+        <button id="play-again-button" class="play-again-button" type="button">PLAY AGAIN</button>
+      </section>
+
+      <footer>
+        <span>LAW / NOT LAW</span>
+        <span>COMPANION GAME</span>
+      </footer>
+    </main>
+  </body>
+</html>
